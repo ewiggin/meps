@@ -15,7 +15,7 @@ export default function AdminMapsDetailPage(props: any) {
               link={`/admin/maps/${id}/${index + 1}`}
               id={String(index + 1)}
               title={String(index + 1)}
-              icon={false}
+              icon={' '}
             />
           ))}
         </div>
