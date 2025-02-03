@@ -1,12 +1,14 @@
 const map = L.map('map').setView([0, 0], 8);
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
+
 const kmlLayer = omnivore.kml('/olot-11/doc.kml').on('ready', function () {
     map.fitBounds(kmlLayer.getBounds()); // 🔹 Ajusta la vista al archivo KML
     // 🔹 Agregar enlaces de navegación a cada marcador
     kmlLayer.eachLayer(function(layer) {
-        if (layer instanceof L.Marker) { // Verifica si es un marcador
+        if (layer instanceof L.Marker) {
             var lat = layer.getLatLng().lat;
             var lng = layer.getLatLng().lng;
 
@@ -19,8 +21,7 @@ const kmlLayer = omnivore.kml('/olot-11/doc.kml').on('ready', function () {
             var mapsUrl = isIOS ? appleMapsUrl : googleMapsUrl;
 
             // 🔹 Agregar el popup con enlace de navegación
-            layer.bindPopup(`<b>Destino</b><br>
-                            <a href="${mapsUrl}" target="_blank">📍 Ir aquí</a>`);
+            layer.bindPopup(`<a href="${mapsUrl}" target="_blank">📍 Ir aquí</a>`);
         }
     });
 }).addTo(map);
