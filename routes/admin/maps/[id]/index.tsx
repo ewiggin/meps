@@ -13,7 +13,6 @@ export default function AdminMapsDetailPage(props: any) {
           {data.map((_, index) => (
             <CardItem
               link={`/admin/maps/${id}/${index + 1}`}
-              id={String(index + 1)}
               title={String(index + 1)}
               icon={' '}
             />

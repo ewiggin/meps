@@ -11,7 +11,6 @@ export default function AdminMapsPage() {
                 {data.map((item) => (
                     <CardItem
                         link={`/admin/maps/${item}`}
-                        id={item}
                         title={item}
                     />
                 ))}

@@ -3,9 +3,10 @@ interface CardItemProps {
   title?: string;
   description?: string;
   icon?: any;
+  colorClass?: string;
 }
 
-export function CardItem({ link, title, description, icon }: CardItemProps) {
+export function CardItem({ link, title, description, icon, colorClass }: CardItemProps) {
   const finalIcon = icon || (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -27,12 +28,12 @@ export function CardItem({ link, title, description, icon }: CardItemProps) {
     <>
       <a
         href={`${link}`}
-        className="group relative block h-64"
+        className={`group relative block h-64 bg-gray-200`}
       >
         <span className="absolute inset-0 border-2 border-dashed border-black">
         </span>
 
-        <div className="relative flex h-full transform items-end border-2 border-black bg-white transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2">
+        <div className={`relative flex h-full transform items-end border-2 border-black ${colorClass || 'bg-white'} transition-transform group-hover:-translate-x-2 group-hover:-translate-y-2`}>
           <div className="p-4 !pt-0 transition-opacity group-hover:absolute group-hover:opacity-0 sm:p-6 lg:p-8">
             {finalIcon}
             <h2 className="mt-4 text-xl font-medium sm:text-2xl">

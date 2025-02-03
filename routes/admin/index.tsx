@@ -9,10 +9,12 @@ export default function AdminIndexPage() {
             <CardItem
                 link={`/admin/maps`}
                 title={'Territorios'}
+                colorClass={'bg-green-200'}
             />
             <CardItem
                 link={`#`}
                 title={'Publicadores'}
+                colorClass={'bg-red-200'}
                 icon={
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                          fill="currentColor"  className="size-10 sm:size-12">
@@ -25,6 +27,7 @@ export default function AdminIndexPage() {
             <CardItem
                 link={`#`}
                 title={'Informes'}
+                colorClass={'bg-slate-200'}
                 icon={
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
