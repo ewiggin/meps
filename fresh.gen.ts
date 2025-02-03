@@ -4,19 +4,27 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
-import * as $api_joke from "./routes/api/joke.ts";
-import * as $greet_name_ from "./routes/greet/[name].tsx";
+import * as $admin_layout from "./routes/admin/_layout.tsx";
+import * as $admin_index from "./routes/admin/index.tsx";
+import * as $admin_maps_id_num_index from "./routes/admin/maps/[id]/[num]/index.tsx";
+import * as $admin_maps_id_index from "./routes/admin/maps/[id]/index.tsx";
+import * as $admin_maps_index from "./routes/admin/maps/index.tsx";
 import * as $index from "./routes/index.tsx";
+import * as $maps_id_timestamp_ from "./routes/maps/[id]-[timestamp].tsx";
 import * as $Counter from "./islands/Counter.tsx";
-import { type Manifest } from "$fresh/server.ts";
+import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
-    "./routes/api/joke.ts": $api_joke,
-    "./routes/greet/[name].tsx": $greet_name_,
+    "./routes/admin/_layout.tsx": $admin_layout,
+    "./routes/admin/index.tsx": $admin_index,
+    "./routes/admin/maps/[id]/[num]/index.tsx": $admin_maps_id_num_index,
+    "./routes/admin/maps/[id]/index.tsx": $admin_maps_id_index,
+    "./routes/admin/maps/index.tsx": $admin_maps_index,
     "./routes/index.tsx": $index,
+    "./routes/maps/[id]-[timestamp].tsx": $maps_id_timestamp_,
   },
   islands: {
     "./islands/Counter.tsx": $Counter,
