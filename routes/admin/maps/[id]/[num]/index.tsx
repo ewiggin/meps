@@ -17,13 +17,16 @@ export default function AdminMapsDetailFinalPage(props: any) {
       </Breadcrumb>
       <div>
         <div className="w-full min-h-64">
-          <iframe
+            <div id="map" style="height: 500px;"></div>
+        {/*  <iframe
             src="https://www.google.com/maps/d/embed?mid=1zONEhOhwP7A1lUEiJqYc3FkB8hzymkE&ll=42.18320406143437%2C2.4822327500000263&z=18"
             frameborder="0"
             width="100%"
             height="500"
           >
-          </iframe>
+          </iframe>*/}
+
+            <script src="/map.js"></script>
         </div>
       </div>
     </>
