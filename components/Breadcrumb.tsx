@@ -2,7 +2,7 @@ export function Breadcrumb(
   { title, backLink }: { title: string; backLink?: string },
 ) {
   return (
-    <div className="border-b border-t sticky top-0 bg-white shadow-sm">
+    <div className="z-50 border-b border-t sticky top-0 bg-white shadow-sm">
       <div className="container mx-auto max-w-screen-xl px-8 py-5">
         <div>
           {backLink &&
