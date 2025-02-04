@@ -12,7 +12,7 @@ export default function AdminIndexPage() {
             colorClass={"bg-green-200"}
           />
           <CardItem
-            link={`#`}
+            link={`/admin/publishers`}
             title={"Publicadores"}
             colorClass={"bg-red-200"}
             icon={
