@@ -1,5 +1,5 @@
 export function Breadcrumb(
-  { title, backLink }: { title: string; backLink?: string },
+  { title, backLink, children }: { title: string; backLink?: string, children?: any },
 ) {
   return (
     <div className="z-50 border-b border-t sticky top-0 bg-white shadow-sm">
@@ -17,8 +17,13 @@ export function Breadcrumb(
               </a>
             )}
         </div>
-        <div className="font-bold text-2xl pb-2">
-          {title}
+        <div className="flex flex-wrap flex-row items-center justify-between">
+          <div className="font-bold text-2xl pb-2">
+            {title}
+          </div>
+          <div>
+            { children }
+          </div>
         </div>
       </div>
     </div>

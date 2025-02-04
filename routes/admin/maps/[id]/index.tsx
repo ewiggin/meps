@@ -1,20 +1,29 @@
 import { CardItem } from "../../../../components/CardItem.tsx";
 import { Breadcrumb } from "../../../../components/Breadcrumb.tsx";
+import { Handlers } from "$fresh/server.ts";
+import territoriesData from '../../../../data/territories.json' with { type: "json" };
+
+export const handler: Handlers<unknown> = {
+   GET(_, ctx) {
+    const id = ctx.params.id;
+    return ctx.render({ territories: territoriesData[id], id });
+  },
+};
 
 export default function AdminMapsDetailPage(props: any) {
-  const id = props.params.id;
-  const data: { id: string }[] = Array(100).fill(0);
+  const { id, territories } = props.data;
 
   return (
     <>
-      <Breadcrumb title={`Territorio: ${id}`} backLink={"/admin/maps"}></Breadcrumb>
+      <Breadcrumb title={`Territorio: ${id}`} backLink={"/admin/maps"}>
+      </Breadcrumb>
       <div className="container mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {data.map((_, index) => (
+          {territories && territories.length && territories.map((item: { num: string, description: string}) => (
             <CardItem
-              link={`/admin/maps/${id}/${index + 1}`}
-              title={String(index + 1)}
-              icon={' '}
+              link={`/admin/maps/${id}/${item.num}`}
+              title={item.num}
+              icon={" "}
             />
           ))}
         </div>

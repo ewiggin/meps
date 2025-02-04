@@ -29,7 +29,7 @@ export default function AdminMapsDetailFinalPage(props: any) {
         backLink={`/admin/maps/${id}`}
       >
       </Breadcrumb>
-      <div className="w-full min-h-64">
+      <div className="px-8 py-8 sm:w-full sm:py-0 sm:px-0 min-h-64">
         <div id="map" style="height: 500px;"></div>
         <script src="/map.js"></script>
       </div>
