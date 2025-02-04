@@ -15,9 +15,6 @@ export class CryptoUtils {
         const rawKey = await crypto.subtle.exportKey("raw", key);
         const keyBase64 = btoa(String.fromCharCode(...new Uint8Array(rawKey)));
 
-        console.log("Clave Base64:", keyBase64); // Guarda esta clave para descifrar luego
-        Deno.writeFile("./keyBase64.txt", encoder.encode(keyBase64));
-
         // Texto a cifrar
         const jsonData = JSON.stringify(data);
 
@@ -43,7 +40,6 @@ export class CryptoUtils {
             data: encryptedBase64,
         };
 
-        console.log("JSON cifrado:", JSON.stringify(encryptedJson, null, 2));
         return {
             key: keyBase64,
             data: encryptedJson
@@ -75,9 +71,6 @@ export class CryptoUtils {
             encryptedBytes
         );
 
-        // Convertir de nuevo a texto JSON
-        const decryptedJson = JSON.parse(decoder.decode(decryptedData));
-        console.log("Datos descifrados:", decryptedJson);
-        return decryptedJson;
+        return JSON.parse(decoder.decode(decryptedData));
     }
 }
