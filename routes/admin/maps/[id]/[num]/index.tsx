@@ -51,8 +51,8 @@ export default function AdminMapsDetailFinalPage(props: any) {
               </th>
             </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200 bg-gray-200">
             <form action={`/admin/maps/${id}/${num}`} method="post">
+            <tbody className="divide-y divide-gray-200 bg-gray-200">
               <tr>
                 <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                   <select name="publicador" required={true}>
@@ -73,8 +73,8 @@ export default function AdminMapsDetailFinalPage(props: any) {
                   </button>
                 </td>
               </tr>
-            </form>
             </tbody>
+            </form>
 
             <tbody className="divide-y divide-gray-200">
             {data.map((item) => (
