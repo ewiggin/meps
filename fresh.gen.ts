@@ -11,6 +11,7 @@ import * as $admin_login from "./routes/admin/login.tsx";
 import * as $admin_maps_id_num_index from "./routes/admin/maps/[id]/[num]/index.tsx";
 import * as $admin_maps_id_index from "./routes/admin/maps/[id]/index.tsx";
 import * as $admin_maps_index from "./routes/admin/maps/index.tsx";
+import * as $admin_publishers_id_ from "./routes/admin/publishers/[id].tsx";
 import * as $admin_publishers_index from "./routes/admin/publishers/index.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $maps_id_timestamp_ from "./routes/maps/[id]-[timestamp].tsx";
@@ -28,6 +29,7 @@ const manifest = {
     "./routes/admin/maps/[id]/[num]/index.tsx": $admin_maps_id_num_index,
     "./routes/admin/maps/[id]/index.tsx": $admin_maps_id_index,
     "./routes/admin/maps/index.tsx": $admin_maps_index,
+    "./routes/admin/publishers/[id].tsx": $admin_publishers_id_,
     "./routes/admin/publishers/index.tsx": $admin_publishers_index,
     "./routes/index.tsx": $index,
     "./routes/maps/[id]-[timestamp].tsx": $maps_id_timestamp_,
