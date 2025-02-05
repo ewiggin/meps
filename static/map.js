@@ -1,27 +1,35 @@
-const map = L.map('map').setView([0, 0], 8);
+const map = L.map('map').setView([42.182062, 2.488314], 12);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
-const kmlLayer = omnivore.kml('/olot-11/doc.kml').on('ready', function () {
-    map.fitBounds(kmlLayer.getBounds()); // 🔹 Ajusta la vista al archivo KML
-    // 🔹 Agregar enlaces de navegación a cada marcador
-    kmlLayer.eachLayer(function(layer) {
-        if (layer instanceof L.Marker) {
-            var lat = layer.getLatLng().lat;
-            var lng = layer.getLatLng().lng;
+document.addEventListener('DOMContentLoaded', () => {
 
-            // 🔹 Crear enlaces dinámicos para Apple Maps (iOS) y Google Maps (Android)
-            var googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-            var appleMapsUrl = `https://maps.apple.com/?daddr=${lat},${lng}`;
+    const mapURL = document.getElementById('mapURL')?.value;
+    if (!mapURL) {
+        return;
+    }
 
-            // 🔹 Detectar si es iOS o Android
-            var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-            var mapsUrl = isIOS ? appleMapsUrl : googleMapsUrl;
+    const kmlLayer = omnivore.kml(mapURL).on('ready', function () {
+        map.fitBounds(kmlLayer.getBounds()); // 🔹 Ajusta la vista al archivo KML
+        // 🔹 Agregar enlaces de navegación a cada marcador
+        kmlLayer.eachLayer(function (layer) {
+            if (layer instanceof L.Marker) {
+                const lat = layer.getLatLng().lat;
+                const lng = layer.getLatLng().lng;
 
-            // 🔹 Agregar el popup con enlace de navegación
-            layer.bindPopup(`<a href="${mapsUrl}" target="_blank">📍 Ir aquí</a>`);
-        }
-    });
-}).addTo(map);
+                // 🔹 Crear enlaces dinámicos para Apple Maps (iOS) y Google Maps (Android)
+                const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                const appleMapsUrl = `https://maps.apple.com/?daddr=${lat},${lng}`;
+
+                // 🔹 Detectar si es iOS o Android
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+                const mapsUrl = isIOS ? appleMapsUrl : googleMapsUrl;
+
+                // 🔹 Agregar el popup con enlace de navegación
+                layer.bindPopup(`<a href="${mapsUrl}" target="_blank">📍 Indicaciones hasta el territorio</a>`);
+            }
+        });
+    }).addTo(map);
+});
