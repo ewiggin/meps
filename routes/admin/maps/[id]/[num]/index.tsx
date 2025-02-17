@@ -42,6 +42,7 @@ export const handler: Handlers<unknown> = {
                 id,
                 num,
                 String(formData.get('publisher')),
+                Boolean(formData.get('link')),
                 String(formData.get('date')),
             );
         }
@@ -107,8 +108,11 @@ export default function AdminMapsDetailFinalPage(
                                 <th className='whitespace-nowrap px-4 py-2 font-bold text-gray-900'>
                                     Asignado el
                                 </th>
+                                <th className='text-left whitespace-nowrap px-4 py-2 font-bold text-gray-900'>
+                                    Enlace
+                                </th>
                                 <th className='whitespace-nowrap px-4 py-2 font-bold text-gray-900'>
-                                    Fecha completado
+                                    Completado el
                                 </th>
                                 <th className='whitespace-nowrap px-4 py-2 font-bold text-gray-900'>
                                 </th>
@@ -151,6 +155,13 @@ export default function AdminMapsDetailFinalPage(
                                             />
                                         </td>
                                         <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
+                                            <input
+                                                className='px-2 py-2 rounded'
+                                                type='checkbox'
+                                                name='link'
+                                            />
+                                        </td>
+                                        <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
                                         </td>
                                         <td className='whitespace-nowrap px-4 py-2 text-gray-700 text-right'>
                                             <button type='submit'>
@@ -189,8 +200,8 @@ export default function AdminMapsDetailFinalPage(
                                                 },
                                             )}
                                         </td>
-                                        <td>
-                                            Enlace
+                                        <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
+                                          {item.link && <a href={`https://meps.deno.dev/maps/${id}/${num}`}>🔗</a> }
                                         </td>
                                         {item?.closeAt &&
                                             (

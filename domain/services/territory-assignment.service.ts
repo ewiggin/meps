@@ -8,16 +8,27 @@ export interface ITerritoryAssignment {
 }
 
 export class TerritoryAssignmentService {
+
+    /**
+     * Abre o asigna territorio a un usuario.
+     * 
+     * @param region Region Id
+     * @param territoryId Territory Num
+     * @param userId User Id
+     * @param date Fecha de referencia
+     */
     static async assign(
         region: string,
         territoryId: string,
         userId: string,
+        link: boolean,
         date: string,
     ): Promise<void> {
         const db = await Deno.openKv();
         await db.set(['assignments', region, territoryId, date], {
             region,
             territoryId,
+            link: Boolean(link),
             userId,
             date,
         });
@@ -45,17 +56,33 @@ export class TerritoryAssignmentService {
         return result || [];
     }
 
+    /**
+     * Comprueba que el territorio este abierto.
+     * 
+     * @param region Region Id
+     * @param territoryId Territory ID
+     * @returns boolean
+     */
     static async isOpen(region: string, territoryId: string): Promise<boolean> {
         const db = await Deno.openKv();
         const items: ITerritoryAssignment[] = await this.list(
             region,
             territoryId,
         );
+        console.log('hola', items);
         const someOpen = items.some((item) => !item?.closeAt);
         db.close();
         return someOpen;
     }
 
+    /**
+     * Cierra el territorio abierto previamente.
+     * 
+     * @param region Region Id
+     * @param territoryId Territory Num
+     * @param date Fecha de referencia
+     * @param closeAt Fecha de cierre
+     */
     static async close(
         region: string,
         territoryId: string,
