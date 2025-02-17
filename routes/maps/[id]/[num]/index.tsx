@@ -1,14 +1,22 @@
-import { Handlers } from "https://deno.land/x/fresh@1.7.2/src/server/types.ts";
-import { Breadcrumb } from "../../../../components/Breadcrumb.tsx";
+import { Handlers } from "$fresh/src/server/types.ts";
+import { Breadcrumb } from "@app/components/Breadcrumb.tsx";
+import { TerritoryAssignmentService } from "@app/domain/services/territory-assignment.service.ts";
 
 export const handler: Handlers<unknown> = {
-  GET(_, ctx) {
+  async GET(_, ctx) {
     const { id, num } = ctx.params;
-    return ctx.render({ id, num });
+
+    const isOpen = await TerritoryAssignmentService.isOpen(id, num);
+
+    return isOpen
+      ? ctx.render({ id, num })
+      : ctx.renderNotFound();
   },
 };
 
-export default function AdminMapsDetailFinalPage(props: { data: { id: string, num: number } }) {
+export default function AdminMapsDetailFinalPage(
+  props: { data: { id: string; num: number } },
+) {
   const { id, num } = props.data;
 
   return (

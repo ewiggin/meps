@@ -14,7 +14,6 @@ import * as $admin_maps_index from "./routes/admin/maps/index.tsx";
 import * as $admin_publishers_id_ from "./routes/admin/publishers/[id].tsx";
 import * as $admin_publishers_index from "./routes/admin/publishers/index.tsx";
 import * as $index from "./routes/index.tsx";
-import * as $maps_id_timestamp_ from "./routes/maps/[id]-[timestamp].tsx";
 import * as $maps_id_num_index from "./routes/maps/[id]/[num]/index.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -33,7 +32,6 @@ const manifest = {
     "./routes/admin/publishers/[id].tsx": $admin_publishers_id_,
     "./routes/admin/publishers/index.tsx": $admin_publishers_index,
     "./routes/index.tsx": $index,
-    "./routes/maps/[id]-[timestamp].tsx": $maps_id_timestamp_,
     "./routes/maps/[id]/[num]/index.tsx": $maps_id_num_index,
   },
   islands: {

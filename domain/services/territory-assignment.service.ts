@@ -27,6 +27,14 @@ export class TerritoryAssignmentService {
         return result || [];
     }
 
+    static async isOpen(region: string, territoryId: string): Promise<boolean> {
+        const db = await Deno.openKv();
+        const items: IKVTerritoryAssignment[] = await this.list(region, territoryId);
+        const someOpen = items.some((item) => !item.value?.closeAt);
+        await db.close(); 
+        return someOpen;
+    }
+
     static async close(region: string, territoryId: string, date: string, closeAt: string): Promise<void> {
         const db = await Deno.openKv();
         const item: ITerritoryAssignment = ((await (await db).get(['assignments', region, territoryId, date])).value);
