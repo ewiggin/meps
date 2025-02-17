@@ -93,7 +93,7 @@ export default function AdminMapsDetailFinalPage(
       </Breadcrumb>
       <div className="container mx-auto max-w-screen-xl px-4 py-12 sm:px-6 sm:py-12 lg:px-8">
         <div className="overflow-x-auto pb-8">
-          <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+          <table className="min-w-full divide-y-2 divide-blue-200 bg-white text-sm">
             <thead className="text-left">
               <tr>
                 <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
@@ -111,7 +111,7 @@ export default function AdminMapsDetailFinalPage(
             </thead>
             {isOpen && (
               <form action={`/admin/maps/${id}/${num}`} method="post">
-                <tbody className="divide-y divide-gray-200 bg-gray-200">
+                <tbody className="divide-y divide-blue-200 bg-blue-200">
                   <tr>
                     <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
                       <select
@@ -136,11 +136,7 @@ export default function AdminMapsDetailFinalPage(
                       />
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                      <input
-                        className="px-2 py-2 rounded"
-                        type="date"
-                        name="closeDate"
-                      />
+                      
                     </td>
                     <td className="whitespace-nowrap px-4 py-2 text-gray-700 text-right">
                       <button type="submit">
