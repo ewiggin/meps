@@ -1,546 +1,546 @@
 {
-  "OLOT": [
-    {
-      "num": "01",
-      "description": ""
-    },
-    {
-      "num": "02",
-      "description": ""
-    },
-    {
-      "num": "03",
-      "description": ""
-    },
-    {
-      "num": "04",
-      "description": ""
-    },
-    {
-      "num": "05",
-      "description": ""
-    },
-    {
-      "num": "06",
-      "description": ""
-    },
-    {
-      "num": "07",
-      "description": ""
-    },
-    {
-      "num": "08",
-      "description": ""
-    },
-    {
-      "num": "09",
-      "description": ""
-    },
-    {
-      "num": "10A",
-      "description": ""
-    },
-    {
-      "num": "10B",
-      "description": ""
-    },
-    {
-      "num": "11",
-      "description": ""
-    },
-    {
-      "num": "12",
-      "description": ""
-    },
-    {
-      "num": "13",
-      "description": ""
-    },
-    {
-      "num": "14",
-      "description": ""
-    },
-    {
-      "num": "15",
-      "description": ""
-    },
-    {
-      "num": "16",
-      "description": ""
-    },
-    {
-      "num": "17",
-      "description": ""
-    },
-    {
-      "num": "18",
-      "description": ""
-    },
-    {
-      "num": "19",
-      "description": ""
-    },
-    {
-      "num": "20",
-      "description": ""
-    },
-    {
-      "num": "21",
-      "description": ""
-    },
-    {
-      "num": "22",
-      "description": ""
-    },
-    {
-      "num": "23",
-      "description": ""
-    },
-    {
-      "num": "24",
-      "description": ""
-    },
-    {
-      "num": "25",
-      "description": ""
-    },
-    {
-      "num": "26",
-      "description": ""
-    },
-    {
-      "num": "27",
-      "description": ""
-    },
-    {
-      "num": "28",
-      "description": ""
-    },
-    {
-      "num": "29",
-      "description": ""
-    },
-    {
-      "num": "30",
-      "description": ""
-    },
-    {
-      "num": "31",
-      "description": ""
-    },
-    {
-      "num": "32",
-      "description": ""
-    },
-    {
-      "num": "33A",
-      "description": ""
-    },
-    {
-      "num": "33B",
-      "description": ""
-    },
-    {
-      "num": "34A",
-      "description": ""
-    },
-    {
-      "num": "34B",
-      "description": ""
-    },
-    {
-      "num": "35A",
-      "description": ""
-    },
-    {
-      "num": "35B",
-      "description": ""
-    },
-    {
-      "num": "36",
-      "description": ""
-    },
-    {
-      "num": "37",
-      "description": ""
-    },
-    {
-      "num": "38",
-      "description": ""
-    },
-    {
-      "num": "39",
-      "description": ""
-    },
-    {
-      "num": "40",
-      "description": ""
-    },
-    {
-      "num": "41",
-      "description": ""
-    },
-    {
-      "num": "42",
-      "description": ""
-    },
-    {
-      "num": "43",
-      "description": ""
-    },
-    {
-      "num": "44",
-      "description": ""
-    },
-    {
-      "num": "45",
-      "description": ""
-    },
-    {
-      "num": "46",
-      "description": ""
-    },
-    {
-      "num": "47",
-      "description": ""
-    },
-    {
-      "num": "48",
-      "description": ""
-    },
-    {
-      "num": "49",
-      "description": ""
-    },
-    {
-      "num": "50",
-      "description": ""
-    },
-    {
-      "num": "51",
-      "description": ""
-    },
-    {
-      "num": "52",
-      "description": ""
-    },
-    {
-      "num": "53",
-      "description": ""
-    },
-    {
-      "num": "54",
-      "description": ""
-    },
-    {
-      "num": "55",
-      "description": ""
-    },
-    {
-      "num": "56",
-      "description": ""
-    },
-    {
-      "num": "57",
-      "description": ""
-    },
-    {
-      "num": "58",
-      "description": ""
-    },
-    {
-      "num": "59",
-      "description": ""
-    },
-    {
-      "num": "60",
-      "description": ""
-    },
-    {
-      "num": "61",
-      "description": ""
-    },
-    {
-      "num": "62",
-      "description": ""
-    },
-    {
-      "num": "63",
-      "description": ""
-    },
-    {
-      "num": "64",
-      "description": ""
-    },
-    {
-      "num": "65",
-      "description": ""
-    }
-  ],
-  "RURAL": [
-    {
-      "num": "101",
-      "description": ""
-    },
-    {
-      "num": "102",
-      "description": ""
-    },
-    {
-      "num": "103",
-      "description": ""
-    },
-    {
-      "num": "104",
-      "description": ""
-    },
-    {
-      "num": "105",
-      "description": ""
-    },
-    {
-      "num": "106",
-      "description": ""
-    },
-    {
-      "num": "107",
-      "description": ""
-    },
-    {
-      "num": "108",
-      "description": ""
-    },
-    {
-      "num": "109",
-      "description": ""
-    },
-    {
-      "num": "110",
-      "description": ""
-    },
-    {
-      "num": "111",
-      "description": ""
-    },
-    {
-      "num": "112",
-      "description": ""
-    },
-    {
-      "num": "113",
-      "description": ""
-    },
-    {
-      "num": "114",
-      "description": ""
-    },
-    {
-      "num": "115",
-      "description": ""
-    },
-    {
-      "num": "116",
-      "description": ""
-    },
-    {
-      "num": "117",
-      "description": ""
-    },
-    {
-      "num": "118",
-      "description": ""
-    },
-    {
-      "num": "119",
-      "description": ""
-    },
-    {
-      "num": "120",
-      "description": ""
-    },
-    {
-      "num": "121",
-      "description": ""
-    },
-    {
-      "num": "122",
-      "description": ""
-    },
-    {
-      "num": "123",
-      "description": ""
-    },
-    {
-      "num": "124",
-      "description": ""
-    },
-    {
-      "num": "125",
-      "description": ""
-    },
-    {
-      "num": "126",
-      "description": ""
-    },
-    {
-      "num": "127",
-      "description": ""
-    },
-    {
-      "num": "128",
-      "description": ""
-    },
-    {
-      "num": "129",
-      "description": ""
-    },
-    {
-      "num": "130",
-      "description": ""
-    },
-    {
-      "num": "131",
-      "description": ""
-    },
-    {
-      "num": "132",
-      "description": ""
-    },
-    {
-      "num": "133",
-      "description": ""
-    },
-    {
-      "num": "134",
-      "description": ""
-    },
-    {
-      "num": "135",
-      "description": ""
-    },
-    {
-      "num": "136A",
-      "description": ""
-    },
-    {
-      "num": "136B",
-      "description": ""
-    },
-    {
-      "num": "137",
-      "description": ""
-    },
-    {
-      "num": "138",
-      "description": ""
-    },
-    {
-      "num": "139",
-      "description": ""
-    }
-  ],
-  "PUNJABI": [
-    {
-      "num": "01",
-      "description": ""
-    },
-    {
-      "num": "02",
-      "description": ""
-    },
-    {
-      "num": "03",
-      "description": ""
-    },
-    {
-      "num": "04",
-      "description": ""
-    },
-    {
-      "num": "05",
-      "description": ""
-    },
-    {
-      "num": "06",
-      "description": ""
-    },
-    {
-      "num": "07",
-      "description": ""
-    },
-    {
-      "num": "08",
-      "description": ""
-    },
-    {
-      "num": "09",
-      "description": ""
-    },
-    {
-      "num": "10",
-      "description": ""
-    },
-    {
-      "num": "11",
-      "description": ""
-    },
-    {
-      "num": "12",
-      "description": ""
-    },
-    {
-      "num": "13",
-      "description": ""
-    },
-    {
-      "num": "14",
-      "description": ""
-    },
-    {
-      "num": "15",
-      "description": ""
-    },
-    {
-      "num": "16",
-      "description": ""
-    }
-  ],
-  "PUNJABI-PUEBLOS": [
-    {
-      "num": "01",
-      "description": ""
-    },
-    {
-      "num": "02",
-      "description": ""
-    },
-    {
-      "num": "03",
-      "description": ""
-    },
-    {
-      "num": "04",
-      "description": ""
-    },
-    {
-      "num": "05",
-      "description": ""
-    },
-    {
-      "num": "06",
-      "description": ""
-    },
-    {
-      "num": "07",
-      "description": ""
-    },
-    {
-      "num": "08",
-      "description": ""
-    },
-    {
-      "num": "09",
-      "description": ""
-    }
-  ]
+    "OLOT": [
+        {
+            "num": "01",
+            "description": ""
+        },
+        {
+            "num": "02",
+            "description": ""
+        },
+        {
+            "num": "03",
+            "description": ""
+        },
+        {
+            "num": "04",
+            "description": ""
+        },
+        {
+            "num": "05",
+            "description": ""
+        },
+        {
+            "num": "06",
+            "description": ""
+        },
+        {
+            "num": "07",
+            "description": ""
+        },
+        {
+            "num": "08",
+            "description": ""
+        },
+        {
+            "num": "09",
+            "description": ""
+        },
+        {
+            "num": "10A",
+            "description": ""
+        },
+        {
+            "num": "10B",
+            "description": ""
+        },
+        {
+            "num": "11",
+            "description": ""
+        },
+        {
+            "num": "12",
+            "description": ""
+        },
+        {
+            "num": "13",
+            "description": ""
+        },
+        {
+            "num": "14",
+            "description": ""
+        },
+        {
+            "num": "15",
+            "description": ""
+        },
+        {
+            "num": "16",
+            "description": ""
+        },
+        {
+            "num": "17",
+            "description": ""
+        },
+        {
+            "num": "18",
+            "description": ""
+        },
+        {
+            "num": "19",
+            "description": ""
+        },
+        {
+            "num": "20",
+            "description": ""
+        },
+        {
+            "num": "21",
+            "description": ""
+        },
+        {
+            "num": "22",
+            "description": ""
+        },
+        {
+            "num": "23",
+            "description": ""
+        },
+        {
+            "num": "24",
+            "description": ""
+        },
+        {
+            "num": "25",
+            "description": ""
+        },
+        {
+            "num": "26",
+            "description": ""
+        },
+        {
+            "num": "27",
+            "description": ""
+        },
+        {
+            "num": "28",
+            "description": ""
+        },
+        {
+            "num": "29",
+            "description": ""
+        },
+        {
+            "num": "30",
+            "description": ""
+        },
+        {
+            "num": "31",
+            "description": ""
+        },
+        {
+            "num": "32",
+            "description": ""
+        },
+        {
+            "num": "33A",
+            "description": ""
+        },
+        {
+            "num": "33B",
+            "description": ""
+        },
+        {
+            "num": "34A",
+            "description": ""
+        },
+        {
+            "num": "34B",
+            "description": ""
+        },
+        {
+            "num": "35A",
+            "description": ""
+        },
+        {
+            "num": "35B",
+            "description": ""
+        },
+        {
+            "num": "36",
+            "description": ""
+        },
+        {
+            "num": "37",
+            "description": ""
+        },
+        {
+            "num": "38",
+            "description": ""
+        },
+        {
+            "num": "39",
+            "description": ""
+        },
+        {
+            "num": "40",
+            "description": ""
+        },
+        {
+            "num": "41",
+            "description": ""
+        },
+        {
+            "num": "42",
+            "description": ""
+        },
+        {
+            "num": "43",
+            "description": ""
+        },
+        {
+            "num": "44",
+            "description": ""
+        },
+        {
+            "num": "45",
+            "description": ""
+        },
+        {
+            "num": "46",
+            "description": ""
+        },
+        {
+            "num": "47",
+            "description": ""
+        },
+        {
+            "num": "48",
+            "description": ""
+        },
+        {
+            "num": "49",
+            "description": ""
+        },
+        {
+            "num": "50",
+            "description": ""
+        },
+        {
+            "num": "51",
+            "description": ""
+        },
+        {
+            "num": "52",
+            "description": ""
+        },
+        {
+            "num": "53",
+            "description": ""
+        },
+        {
+            "num": "54",
+            "description": ""
+        },
+        {
+            "num": "55",
+            "description": ""
+        },
+        {
+            "num": "56",
+            "description": ""
+        },
+        {
+            "num": "57",
+            "description": ""
+        },
+        {
+            "num": "58",
+            "description": ""
+        },
+        {
+            "num": "59",
+            "description": ""
+        },
+        {
+            "num": "60",
+            "description": ""
+        },
+        {
+            "num": "61",
+            "description": ""
+        },
+        {
+            "num": "62",
+            "description": ""
+        },
+        {
+            "num": "63",
+            "description": ""
+        },
+        {
+            "num": "64",
+            "description": ""
+        },
+        {
+            "num": "65",
+            "description": ""
+        }
+    ],
+    "RURAL": [
+        {
+            "num": "101",
+            "description": ""
+        },
+        {
+            "num": "102",
+            "description": ""
+        },
+        {
+            "num": "103",
+            "description": ""
+        },
+        {
+            "num": "104",
+            "description": ""
+        },
+        {
+            "num": "105",
+            "description": ""
+        },
+        {
+            "num": "106",
+            "description": ""
+        },
+        {
+            "num": "107",
+            "description": ""
+        },
+        {
+            "num": "108",
+            "description": ""
+        },
+        {
+            "num": "109",
+            "description": ""
+        },
+        {
+            "num": "110",
+            "description": ""
+        },
+        {
+            "num": "111",
+            "description": ""
+        },
+        {
+            "num": "112",
+            "description": ""
+        },
+        {
+            "num": "113",
+            "description": ""
+        },
+        {
+            "num": "114",
+            "description": ""
+        },
+        {
+            "num": "115",
+            "description": ""
+        },
+        {
+            "num": "116",
+            "description": ""
+        },
+        {
+            "num": "117",
+            "description": ""
+        },
+        {
+            "num": "118",
+            "description": ""
+        },
+        {
+            "num": "119",
+            "description": ""
+        },
+        {
+            "num": "120",
+            "description": ""
+        },
+        {
+            "num": "121",
+            "description": ""
+        },
+        {
+            "num": "122",
+            "description": ""
+        },
+        {
+            "num": "123",
+            "description": ""
+        },
+        {
+            "num": "124",
+            "description": ""
+        },
+        {
+            "num": "125",
+            "description": ""
+        },
+        {
+            "num": "126",
+            "description": ""
+        },
+        {
+            "num": "127",
+            "description": ""
+        },
+        {
+            "num": "128",
+            "description": ""
+        },
+        {
+            "num": "129",
+            "description": ""
+        },
+        {
+            "num": "130",
+            "description": ""
+        },
+        {
+            "num": "131",
+            "description": ""
+        },
+        {
+            "num": "132",
+            "description": ""
+        },
+        {
+            "num": "133",
+            "description": ""
+        },
+        {
+            "num": "134",
+            "description": ""
+        },
+        {
+            "num": "135",
+            "description": ""
+        },
+        {
+            "num": "136A",
+            "description": ""
+        },
+        {
+            "num": "136B",
+            "description": ""
+        },
+        {
+            "num": "137",
+            "description": ""
+        },
+        {
+            "num": "138",
+            "description": ""
+        },
+        {
+            "num": "139",
+            "description": ""
+        }
+    ],
+    "PUNJABI": [
+        {
+            "num": "01",
+            "description": ""
+        },
+        {
+            "num": "02",
+            "description": ""
+        },
+        {
+            "num": "03",
+            "description": ""
+        },
+        {
+            "num": "04",
+            "description": ""
+        },
+        {
+            "num": "05",
+            "description": ""
+        },
+        {
+            "num": "06",
+            "description": ""
+        },
+        {
+            "num": "07",
+            "description": ""
+        },
+        {
+            "num": "08",
+            "description": ""
+        },
+        {
+            "num": "09",
+            "description": ""
+        },
+        {
+            "num": "10",
+            "description": ""
+        },
+        {
+            "num": "11",
+            "description": ""
+        },
+        {
+            "num": "12",
+            "description": ""
+        },
+        {
+            "num": "13",
+            "description": ""
+        },
+        {
+            "num": "14",
+            "description": ""
+        },
+        {
+            "num": "15",
+            "description": ""
+        },
+        {
+            "num": "16",
+            "description": ""
+        }
+    ],
+    "PUNJABI-PUEBLOS": [
+        {
+            "num": "01",
+            "description": ""
+        },
+        {
+            "num": "02",
+            "description": ""
+        },
+        {
+            "num": "03",
+            "description": ""
+        },
+        {
+            "num": "04",
+            "description": ""
+        },
+        {
+            "num": "05",
+            "description": ""
+        },
+        {
+            "num": "06",
+            "description": ""
+        },
+        {
+            "num": "07",
+            "description": ""
+        },
+        {
+            "num": "08",
+            "description": ""
+        },
+        {
+            "num": "09",
+            "description": ""
+        }
+    ]
 }

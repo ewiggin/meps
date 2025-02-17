@@ -1,4 +1,4 @@
-import { FreshContext } from "$fresh/server.ts";
+import { FreshContext } from '$fresh/server.ts';
 import { getCookies } from '$std/http/cookie.ts';
 
 export function handler(req: Request, ctx: FreshContext) {
@@ -9,7 +9,7 @@ export function handler(req: Request, ctx: FreshContext) {
 
     const cookies = getCookies(req.headers);
     if (!cookies || !cookies.auth) {
-        return new Response("", {
+        return new Response('', {
             status: 303,
             headers: { Location: `/admin/login` },
         });
