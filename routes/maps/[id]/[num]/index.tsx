@@ -8,7 +8,7 @@ export const handler: Handlers<unknown> = {
   },
 };
 
-export default function AdminMapsDetailFinalPage(props: any) {
+export default function AdminMapsDetailFinalPage(props: { data: { id: string, num: number } }) {
   const { id, num } = props.data;
 
   return (

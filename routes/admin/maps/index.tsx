@@ -1,6 +1,6 @@
-import { CardItem } from '../../../components/CardItem.tsx';
-import { Breadcrumb } from '../../../components/Breadcrumb.tsx';
-import territoriesData from '../../../data/territories.json' with { type: "json" };
+import { CardItem } from "@app/components/CardItem.tsx";
+import { Breadcrumb } from "@app/components/Breadcrumb.tsx";
+import territoriesData from "@app/data/territories.json" with { type: "json" };
 
 export default function AdminMapsPage() {
     const regions = Object.keys(territoriesData);

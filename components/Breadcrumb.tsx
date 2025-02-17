@@ -17,7 +17,7 @@ export function Breadcrumb(
               </a>
             )}
         </div>
-        <div className="flex flex-wrap flex-row items-center justify-between">
+        <div className="flex flex-wrap flex-row items-start justify-between">
           <div className="font-bold text-2xl pb-2">
             {title}
           </div>

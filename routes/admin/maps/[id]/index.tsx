@@ -1,7 +1,7 @@
-import { CardItem } from "../../../../components/CardItem.tsx";
-import { Breadcrumb } from "../../../../components/Breadcrumb.tsx";
+import { CardItem } from "@app/components/CardItem.tsx";
+import { Breadcrumb } from "@app/components/Breadcrumb.tsx";
 import { Handlers } from "$fresh/server.ts";
-import territoriesData from '../../../../data/territories.json' with { type: "json" };
+import territoriesData from "@app/data/territories.json" with { type: "json" };
 
 export const handler: Handlers<unknown> = {
    GET(_, ctx) {

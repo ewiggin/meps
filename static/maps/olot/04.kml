@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>02</name>
+    <name>Limites</name>
     <Style id="icon-1899-FF5252-nodesc-normal">
       <IconStyle>
         <color>ff5252ff</color>
@@ -44,10 +44,10 @@
         <styleUrl>#icon-1899-FF5252-nodesc-highlight</styleUrl>
       </Pair>
     </StyleMap>
-    <Style id="poly-FF5252-2901-0-nodesc-normal">
+    <Style id="poly-FF5252-3401-0-nodesc-normal">
       <LineStyle>
         <color>ff5252ff</color>
-        <width>2.901</width>
+        <width>3.401</width>
       </LineStyle>
       <PolyStyle>
         <color>005252ff</color>
@@ -58,10 +58,10 @@
         <text><![CDATA[<h3>$[name]</h3>]]></text>
       </BalloonStyle>
     </Style>
-    <Style id="poly-FF5252-2901-0-nodesc-highlight">
+    <Style id="poly-FF5252-3401-0-nodesc-highlight">
       <LineStyle>
         <color>ff5252ff</color>
-        <width>4.3515</width>
+        <width>5.1015</width>
       </LineStyle>
       <PolyStyle>
         <color>005252ff</color>
@@ -72,33 +72,37 @@
         <text><![CDATA[<h3>$[name]</h3>]]></text>
       </BalloonStyle>
     </Style>
-    <StyleMap id="poly-FF5252-2901-0-nodesc">
+    <StyleMap id="poly-FF5252-3401-0-nodesc">
       <Pair>
         <key>normal</key>
-        <styleUrl>#poly-FF5252-2901-0-nodesc-normal</styleUrl>
+        <styleUrl>#poly-FF5252-3401-0-nodesc-normal</styleUrl>
       </Pair>
       <Pair>
         <key>highlight</key>
-        <styleUrl>#poly-FF5252-2901-0-nodesc-highlight</styleUrl>
+        <styleUrl>#poly-FF5252-3401-0-nodesc-highlight</styleUrl>
       </Pair>
     </StyleMap>
     <Placemark>
       <name/>
-      <styleUrl>#poly-FF5252-2901-0-nodesc</styleUrl>
+      <styleUrl>#poly-FF5252-3401-0-nodesc</styleUrl>
       <Polygon>
         <outerBoundaryIs>
           <LinearRing>
             <tessellate>1</tessellate>
             <coordinates>
-              2.4758063,42.1669442,0
-              2.4750821,42.1661212,0
-              2.4750686,42.1659829,0
-              2.4755514,42.1654064,0
-              2.4758465,42.1645316,0
-              2.476949,42.1647852,0
-              2.4770616,42.1648925,0
-              2.4765037,42.1663756,0
-              2.4758063,42.1669442,0
+              2.4742479,42.1637363,0
+              2.4744356,42.1638358,0
+              2.4758411,42.1645316,0
+              2.475546,42.1654064,0
+              2.4753154,42.1656608,0
+              2.4750632,42.1659829,0
+              2.4740655,42.1655654,0
+              2.4744946,42.1649531,0
+              2.4730087,42.1642533,0
+              2.4737168,42.163959,0
+              2.4736631,42.1636131,0
+              2.473926,42.1634978,0
+              2.4742479,42.1637363,0
             </coordinates>
           </LinearRing>
         </outerBoundaryIs>
@@ -109,7 +113,7 @@
       <styleUrl>#icon-1899-FF5252-nodesc</styleUrl>
       <Point>
         <coordinates>
-          2.4761013,42.1655367,0
+          2.4747307,42.1645475,0
         </coordinates>
       </Point>
     </Placemark>
