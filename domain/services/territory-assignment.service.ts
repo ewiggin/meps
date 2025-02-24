@@ -39,17 +39,23 @@ export class TerritoryAssignmentService {
      * Devuelve todas las asignaciones de este territorio.
      *
      * @param region Region ID
-     * @param territoryId Territory Num.
+     * @param territoryId
      * @returns ITerritoryAssignment[]
      */
     static async list(
         region: string,
-        territoryId: string,
+        territoryId?: string,
     ): Promise<ITerritoryAssignment[]> {
         const db = await Deno.openKv();
+
+        const key = ['assignments', region];
+        if (territoryId) {
+            key.push(territoryId);
+        }
+
         const result = (await Array.fromAsync(
             db.list<ITerritoryAssignment>({
-                prefix: ['assignments', region, territoryId],
+                prefix: key,
             }),
         )).map((item) => item.value);
         db.close();
