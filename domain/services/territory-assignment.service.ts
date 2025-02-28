@@ -11,10 +11,11 @@ export class TerritoryAssignmentService {
 
     /**
      * Abre o asigna territorio a un usuario.
-     * 
+     *
      * @param region Region Id
      * @param territoryId Territory Num
      * @param userId User Id
+     * @param link public link
      * @param date Fecha de referencia
      */
     static async assign(
@@ -25,13 +26,24 @@ export class TerritoryAssignmentService {
         date: string,
     ): Promise<void> {
         const db = await Deno.openKv();
-        await db.set(['assignments', region, territoryId, date], {
+
+        const userKey = ['user_assignments', userId, date];
+        const assignmentKey = ['assignments', region, territoryId, date];
+
+        const assignment = {
             region,
             territoryId,
             link: Boolean(link),
             userId,
             date,
-        });
+        };
+
+        await db
+            .atomic()
+            .set(userKey, assignment)
+            .set(assignmentKey, assignment)
+            .commit();
+
         db.close();
     }
 
@@ -59,6 +71,20 @@ export class TerritoryAssignmentService {
             }),
         )).map((item) => item.value);
         db.close();
+        return result || [];
+    }
+
+    static async listByUserId(userId: string): Promise<ITerritoryAssignment[]> {
+        const db = await Deno.openKv();
+
+        const key = ['user_assignments', userId];
+        const result = (await Array.fromAsync(
+            db.list<ITerritoryAssignment>({
+                prefix: key,
+            }),
+        )).map((item) => item.value);
+        db.close();
+
         return result || [];
     }
 
@@ -95,16 +121,22 @@ export class TerritoryAssignmentService {
         closeAt: string,
     ): Promise<void> {
         const db = await Deno.openKv();
-        const item: ITerritoryAssignment | null =
-            (await db.get<ITerritoryAssignment>([
-                'assignments',
-                region,
-                territoryId,
-                date,
-            ])).value;
+
+        const assignmentKey = ['assignments', region, territoryId, date];
+        // Cerramos el territorio
+        const item: ITerritoryAssignment | null = (await db.get<ITerritoryAssignment>(assignmentKey)).value;
         if (item) {
             item.closeAt = new Date(closeAt);
-            await db.set(['assignments', region, territoryId, date], item);
+
+            // Actualizamos también el registro del usuario
+            const userId = item.userId;
+            const userKey = ['user_assignments', userId, date]
+
+            await db
+                .atomic()
+                .set(userKey, item)
+                .set(assignmentKey, item)
+                .commit();
         }
         db.close();
     }
