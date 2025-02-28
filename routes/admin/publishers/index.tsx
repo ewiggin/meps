@@ -1,9 +1,9 @@
-import { CardItem } from '../../../components/CardItem.tsx';
-import { Breadcrumb } from '../../../components/Breadcrumb.tsx';
-import publishers from '../../../data/publishers.json' with { type: 'json' };
-
+import { CardItem } from "@app/components/CardItem.tsx";
+import { Breadcrumb } from "@app/components/Breadcrumb.tsx";
+import publishers from "@app/data/publishers.json" with { type: 'json' };
 import { Handlers } from 'https://deno.land/x/fresh@1.7.2/src/server/types.ts';
-import { CryptoUtils } from '../../../domain/crypto.utils.ts';
+import { CryptoUtils } from "@app/domain/crypto.utils.ts";
+
 export const handler: Handlers<unknown> = {
     async GET(_, ctx) {
         const id = ctx.params.id;
