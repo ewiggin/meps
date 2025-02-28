@@ -13,9 +13,8 @@ export const handler: Handlers<unknown> = {
         const { id, num } = ctx.params;
 
         // Assignments
-        const assignments: ITerritoryAssignment[] =
-            await TerritoryAssignmentService
-                .list(id, num);
+        const assignments: ITerritoryAssignment[] = (await TerritoryAssignmentService.list(id, num) || [])
+            .toSorted((one, other) => new Date(one.date).getTime() - new Date(other.date).getTime());
 
         return ctx.render({
             publishers: await CryptoUtils.decrypt(
@@ -30,6 +29,9 @@ export const handler: Handlers<unknown> = {
     async POST(req: Request, ctx) {
         const { id, num } = ctx.params;
         const formData = await req.formData();
+
+        // TODO: check dates!
+
         if (formData.get('closeDate')) {
             await TerritoryAssignmentService.close(
                 id,
