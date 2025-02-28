@@ -25,24 +25,23 @@ export const handler: Handlers<unknown> = {
         const territories = (territoriesData as Record<string, ITerritory[]>)[regionId] as ITerritoryWithAssign[];
 
         assignments
+            .filter((assign) => assign.date && !assign.closeAt)
             .forEach((assign) => {
                 const territory2Assign = territories.find((item) => item.num === assign.territoryId);
                 if (!territory2Assign) {
                     return;
                 }
-                if (!assign.closeAt) {
-                    territory2Assign.assigned = true;
 
-                    const currentDate = new Date(assign.date);
-                    const targetDate = new Date();
+                territory2Assign.assigned = true;
 
-                    // Add 4 months to the current date
-                    currentDate.setMonth(currentDate.getMonth() + 4);
+                const currentDate = new Date(assign.date);
+                const targetDate = new Date();
 
-                    // Compare the dates
-                    territory2Assign.toClaim = targetDate >= currentDate;
-                }
+                // Add 4 months to the current date
+                currentDate.setMonth(currentDate.getMonth() + 4);
 
+                // Compare the dates
+                territory2Assign.toClaim = targetDate >= currentDate;
         });
 
         return ctx.render({
