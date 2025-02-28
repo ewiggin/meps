@@ -7,13 +7,15 @@ import { TerritoryAssignmentService } from '@app/domain/services/territory-assig
 
 enum TerritorySorting {
     NORMAL = '0',
-    LESS_WORKED = '1',
+    OLDER = '1',
+    LESS_WORKED = '2',
 }
 
 interface ITerritoryWithAssign extends ITerritory {
     assigned?: boolean;
     toClaim?: boolean;
-    date?: Date;
+    date?: Date | null;
+    countAssignations: number;
 }
 
 interface IAdminMapsDetailArgs {
@@ -32,31 +34,41 @@ export const handler: Handlers<unknown> = {
         const regionId = ctx.params.id;
         // Assignments
         const assignments = await TerritoryAssignmentService.list(regionId);
-        const territories = (territoriesData as Record<string, ITerritory[]>)[regionId] as ITerritoryWithAssign[];
+        const territories = [...(territoriesData as Record<string, ITerritory[]>)[regionId]] as ITerritoryWithAssign[];
+
+        territories.forEach((item) => {
+            item.countAssignations = assignments.filter((assign) => assign.territoryId === item.num)?.length || 0;
+        });
 
         assignments
-            .filter((assign) => assign.date && !assign.closeAt)
             .forEach((assign) => {
-                const territory2Assign = territories.find((item) => item.num === assign.territoryId);
+                const territory2Assign = [...territories].find((item) => item.num === assign.territoryId);
                 if (!territory2Assign) {
                     return;
                 }
 
-                territory2Assign.date = new Date(assign.closeAt || assign.date);
-                territory2Assign.assigned = true;
+                territory2Assign.date = assign.closeAt || assign.date
+                    ? new Date(assign.closeAt || assign.date)
+                    : null;
 
-                const currentDate = new Date(assign.date);
-                const targetDate = new Date();
+                if (assign.date && !assign.closeAt) {
+                    territory2Assign.assigned = true;
 
-                // Add 4 months to the current date
-                currentDate.setMonth(currentDate.getMonth() + 4);
+                    const currentDate = new Date(assign.date);
+                    const targetDate = new Date();
 
-                // Compare the dates
-                territory2Assign.toClaim = targetDate >= currentDate;
+                    // Add 4 months to the current date
+                    currentDate.setMonth(currentDate.getMonth() + 4);
+
+                    // Compare the dates
+                    territory2Assign.toClaim = targetDate >= currentDate;
+                }
         });
 
-        let sortedTerritories: ITerritoryWithAssign[] = [...territories];
+        let sortedTerritories: ITerritoryWithAssign[] = territories;
         if (sortBy === TerritorySorting.LESS_WORKED) {
+            sortedTerritories = territories.toSorted((one, other) => one.countAssignations - other.countAssignations);
+        } else if (sortBy === TerritorySorting.OLDER) {
             sortedTerritories = territories.toSorted((one, other) => {
                 if (!one.date) {
                     return 1;
@@ -85,17 +97,22 @@ export default function AdminMapsDetailPage(props: IAdminMapsDetailArgs) {
             <Breadcrumb title={`Territorio: ${id}`} backLink={'/admin/maps'}>
                 <div className="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
                     <a
-                        href={'?sort=0'}
+                        href={`?sort=${TerritorySorting.NORMAL}`}
                         className={`${ !sortBy || sortBy === TerritorySorting.NORMAL ? `bg-white text-blue-500`: 'text-gray-500' } inline-block rounded-md  px-4 py-2 text-sm shadow-xs focus:relative`}
                     >
                         Alfabético
                     </a>
-
                     <a
-                        href={'?sort=1'}
-                        className={`${ sortBy === TerritorySorting.LESS_WORKED ? `bg-white text-blue-500`: 'text-gray-500' } inline-block rounded-md  px-4 py-2 text-sm shadow-xs focus:relative`}
+                        href={`?sort=${TerritorySorting.OLDER}`}
+                        className={`${ sortBy === TerritorySorting.OLDER ? `bg-white text-blue-500`: 'text-gray-500' } inline-block rounded-md  px-4 py-2 text-sm shadow-xs focus:relative`}
                     >
                         Antigüedad
+                    </a>
+                    <a
+                        href={`?sort=${TerritorySorting.LESS_WORKED}`}
+                        className={`${ sortBy === TerritorySorting.LESS_WORKED ? `bg-white text-blue-500`: 'text-gray-500' } inline-block rounded-md  px-4 py-2 text-sm shadow-xs focus:relative`}
+                    >
+                        Menos trabajado
                     </a>
                 </div>
             </Breadcrumb>
@@ -106,6 +123,7 @@ export default function AdminMapsDetailPage(props: IAdminMapsDetailArgs) {
                             <CardItem
                                 link={`/admin/maps/${id}/${item.num}`}
                                 title={item.num}
+                                description={`Asignado ${item.countAssignations || 0} veces`}
                                 icon={' '}
                                 colorClass={item.toClaim ? 'bg-red-200' : item.assigned ? 'bg-slate-200' : ''}
                             />
