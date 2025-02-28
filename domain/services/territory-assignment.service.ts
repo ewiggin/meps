@@ -75,7 +75,6 @@ export class TerritoryAssignmentService {
             region,
             territoryId,
         );
-        console.log('hola', items);
         const someOpen = items.some((item) => !item?.closeAt);
         db.close();
         return someOpen;
