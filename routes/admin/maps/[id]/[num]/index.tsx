@@ -7,6 +7,7 @@ import {
     ITerritoryAssignment,
     TerritoryAssignmentService,
 } from '@app/domain/services/territory-assignment.service.ts';
+import { IPublisher } from "@app/domain/model/publisher.ts";
 
 export const handler: Handlers<unknown> = {
     async GET(_, ctx) {
@@ -139,9 +140,7 @@ export default function AdminMapsDetailFinalPage(
                                                 >
                                                     Selecciona un publicador
                                                 </option>
-                                                {publishers.map((
-                                                    { id, name, lastName }: any,
-                                                ) => (
+                                                {publishers.map(( { id, name, lastName }: IPublisher ) => (
                                                     <option value={id}>
                                                         {name} {lastName}
                                                     </option>

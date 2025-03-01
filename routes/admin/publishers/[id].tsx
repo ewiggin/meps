@@ -23,7 +23,7 @@ export const handler: Handlers<unknown> = {
 
         const publisher = decryptedPublishers.find((item) => item.id === userId);
         if (!publisher) {
-            // redirect!
+            return ctx.renderNotFound();
         }
 
         // Assignments
