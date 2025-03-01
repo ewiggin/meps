@@ -59,7 +59,7 @@ export default function PublisherView(args: PublisherViewArgs) {
                                         {Intl.DateTimeFormat('es-ES', { dateStyle: 'full'}).format(new Date(assignment.closeAt))}
 
                                     </time>
-                                    <h3 className="text-lg font-semibold text-gray-900">
+                                    <h3 className="text-lg mb-4 font-semibold text-gray-900">
                                        📥 Devuelto: { assignment.region } {assignment.territoryId }
                                     </h3>
                                 </>
@@ -71,7 +71,7 @@ export default function PublisherView(args: PublisherViewArgs) {
                                 {assignment.date && Intl.DateTimeFormat('es-ES', { dateStyle: 'full'}).format(new Date(assignment.date))}
 
                             </time>
-                            <h3 className="text-lg font-semibold text-gray-900">
+                            <h3 className="text-lg mb-4 font-semibold text-gray-900">
                                 📤 Asignado: { assignment.region } {assignment.territoryId }
                             </h3>
                             <a href={`/admin/maps/${assignment.region}/${assignment.territoryId}`}
