@@ -6,7 +6,7 @@ import {
     TerritoryAssignmentService,
 } from '@app/domain/services/territory-assignment.service.ts';
 import PublisherName from '@app/islands/PublisherName.tsx';
-import PublisherSelect from '@app/islands/PublisherSelect.tsx';
+import PublisherSelectOptions from '@app/islands/PublisherSelect.tsx';
 
 export const handler: Handlers<unknown> = {
     async GET(_, ctx) {
@@ -126,7 +126,17 @@ export default function AdminMapsDetailFinalPage(
                                 <tbody className='divide-y divide-blue-200 bg-blue-200'>
                                     <tr>
                                         <td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900'>
-                                            <PublisherSelect name='publisher' />
+                                            <select
+                                                className='px-2 py-2 rounded'
+                                                name='publisher'
+                                                title='publisher'
+                                                required
+                                            >
+                                                <option value='null'>
+                                                    Selecciona un publicador
+                                                </option>
+                                                <PublisherSelectOptions />
+                                            </select>
                                         </td>
                                         <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
                                             <input
