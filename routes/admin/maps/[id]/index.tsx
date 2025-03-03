@@ -43,34 +43,31 @@ export const handler: Handlers<unknown> = {
             item.countAssignations = assignments.filter((assign) =>
                 assign.territoryId === item.num
             )?.length || 0;
-        });
 
-        assignments
-            .forEach((assign) => {
-                const territory2Assign = territories.find((item) =>
-                    item.num === assign.territoryId
-                );
-                if (!territory2Assign) {
-                    return;
-                }
+            const assignment = (assignments || []).toSorted((one, other) =>
+                new Date(other.date).getTime() -
+                new Date(one.date).getTime()
+            ).find((assign) => assign.territoryId === item.num);
 
-                territory2Assign.date = assign.closeAt || assign.date
-                    ? new Date(assign.closeAt || assign.date)
+            if (assignment) {
+                item.date = assignment.closeAt || assignment.date
+                    ? new Date(assignment.closeAt || assignment.date)
                     : null;
 
-                territory2Assign.assigned = Boolean(assign.date) &&
-                    !assign.closeAt;
+                item.assigned = Boolean(assignment.date) &&
+                    !assignment.closeAt;
 
-                const currentDate = new Date(assign.date);
+                const currentDate = new Date(assignment.date);
                 const targetDate = new Date();
 
                 // Add 4 months to the current date
                 currentDate.setMonth(currentDate.getMonth() + 4);
 
                 // Compare the dates
-                territory2Assign.toClaim = !assign.closeAt &&
+                item.toClaim = !assignment.closeAt &&
                     targetDate >= currentDate;
-            });
+            }
+        });
 
         let sortedTerritories: ITerritoryWithAssign[] = territories;
         if (sortBy === TerritorySorting.LESS_WORKED) {
