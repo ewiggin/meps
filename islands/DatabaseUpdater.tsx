@@ -7,9 +7,7 @@ import { useRef } from 'preact/hooks';
  */
 export default function DatabaseUpdater() {
     if (!IS_BROWSER) {
-        return (
-            <p>Leaflet must be loaded on the client. No children will render</p>
-        );
+        return;
     }
 
     const fileInputRef = useRef<HTMLInputElement>(null);

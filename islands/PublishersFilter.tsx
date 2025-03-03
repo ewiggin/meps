@@ -6,9 +6,7 @@ import { IS_BROWSER } from '$fresh/runtime.ts';
 
 export default function PublishersFilter() {
     if (!IS_BROWSER) {
-        return (
-            <p>Leaflet must be loaded on the client. No children will render</p>
-        );
+        return;
     }
 
     const localPublishers = JSON.parse(
