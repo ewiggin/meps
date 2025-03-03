@@ -1,13 +1,12 @@
 import { Breadcrumb } from '@app/components/Breadcrumb.tsx';
-import publishers from '@app/data/publishers.json' with { type: 'json' };
-import { CryptoUtils } from '@app/domain/crypto.utils.ts';
 import { Handlers } from '$fresh/src/server/types.ts';
 import { qrcode } from '@libs/qrcode';
 import {
     ITerritoryAssignment,
     TerritoryAssignmentService,
 } from '@app/domain/services/territory-assignment.service.ts';
-import { IPublisher } from "@app/domain/model/publisher.ts";
+import PublisherName from '@app/islands/PublisherName.tsx';
+import PublisherSelect from '@app/islands/PublisherSelect.tsx';
 
 export const handler: Handlers<unknown> = {
     async GET(_, ctx) {
@@ -18,10 +17,6 @@ export const handler: Handlers<unknown> = {
             .toSorted((one, other) => new Date(one.date).getTime() - new Date(other.date).getTime());
 
         return ctx.render({
-            publishers: await CryptoUtils.decrypt(
-                publishers,
-                Deno.env.get('KEY_BASE_64')!,
-            ),
             id,
             num,
             assignments: assignments || [],
@@ -32,7 +27,6 @@ export const handler: Handlers<unknown> = {
         const formData = await req.formData();
 
         // TODO: check dates!
-
         if (formData.get('closeDate')) {
             await TerritoryAssignmentService.close(
                 id,
@@ -40,7 +34,7 @@ export const handler: Handlers<unknown> = {
                 String(formData.get('date')),
                 String(formData.get('closeDate')),
             );
-        } else {
+        } else if (formData.get('publisher')) {
             await TerritoryAssignmentService.assign(
                 id,
                 num,
@@ -62,7 +56,6 @@ interface IAdminMapsDetailsProps {
     data: {
         id: string;
         num: string;
-        publishers: { id: string; name: string; lastName: string }[];
         assignments: ITerritoryAssignment[];
     };
 }
@@ -70,7 +63,7 @@ interface IAdminMapsDetailsProps {
 export default function AdminMapsDetailFinalPage(
     props: IAdminMapsDetailsProps,
 ) {
-    const { id, num, publishers, assignments } = props.data;
+    const { id, num, assignments } = props.data;
 
     //
     const finalAssignments = assignments
@@ -129,30 +122,14 @@ export default function AdminMapsDetailFinalPage(
                                 <tbody className='divide-y divide-blue-200 bg-blue-200'>
                                     <tr>
                                         <td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900'>
-                                            <select
-                                                className='px-2 py-2 rounded'
-                                                name='publisher'
-                                                required={true}
-                                            >
-                                                <option
-                                                    value='null'
-                                                    selected={true}
-                                                >
-                                                    Selecciona un publicador
-                                                </option>
-                                                {publishers.map(( { id, name, lastName }: IPublisher ) => (
-                                                    <option value={id}>
-                                                        {name} {lastName}
-                                                    </option>
-                                                ))}
-                                            </select>
+                                            <PublisherSelect name='publisher' />
                                         </td>
                                         <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
                                             <input
                                                 className='px-2 py-2 rounded'
                                                 type='date'
                                                 name='date'
-                                                required={true}
+                                                required
                                             />
                                         </td>
                                         <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
@@ -180,15 +157,7 @@ export default function AdminMapsDetailFinalPage(
                                     <tr>
                                         <td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900'>
                                             <span>
-                                                {publishers.map((pub) => {
-                                                    return {
-                                                        id: pub.id,
-                                                        name:
-                                                            `${pub.name} ${pub.lastName}`,
-                                                    };
-                                                }).find(({ id }) =>
-                                                    item.userId === id
-                                                )?.name}
+                                                <PublisherName pubId={item.userId}></PublisherName>
                                             </span>
                                         </td>
                                         <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
@@ -242,7 +211,7 @@ export default function AdminMapsDetailFinalPage(
                                                         className='px-2 py-2 rounded border'
                                                         type='date'
                                                         name='closeDate'
-                                                        required={true}
+                                                        required
                                                     />
                                                     <button type='submit'>
                                                         Cerrar territorio

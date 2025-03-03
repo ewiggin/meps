@@ -1,39 +1,34 @@
 import { IPublisher } from '@app/domain/model/publisher.ts';
 import { CardItem } from '@app/components/CardItem.tsx';
 import { useSignal } from '@preact/signals';
-import { StringUtils } from '../domain/string.utils.ts';
+import { StringUtils } from "@app/domain/string.utils.ts";
 
-interface CounterProps {
-    publishers: IPublisher[];
-}
+export default function PublishersFilter() {
 
-export default function PublishersFilter(props: CounterProps) {
+    const localPublishers = JSON.parse(localStorage.getItem('pubs') as string) as IPublisher[];
 
-    const publishersSignal = useSignal<IPublisher[]>(props.publishers);
+    const publishersSignal = useSignal<IPublisher[]>(localPublishers || []);
     const searchFn = (event: any): void => {
         if (!event?.target) {
             return;
         }
 
         const searchValue = event.target.value;
-
-        publishersSignal.value = props
-            .publishers
-            .filter(({ name, lastName }) => {
-                return StringUtils.includes(name, searchValue) || StringUtils.includes(lastName, searchValue);
-            });
+        publishersSignal.value = (localPublishers || [])
+            .filter(({ name, lastName }) => StringUtils.includes(name, searchValue) || StringUtils.includes(lastName, searchValue));
     };
 
     return (
         <>
+            
             <div className="relative  mb-5">
                 <label htmlFor="Search" className="sr-only"> Buscar </label>
                 <input
                     type="search"
                     id="Search"
                     onKeyUp={searchFn}
-                    autoCorrect={'off'}
-                    autoComplete={'off'}
+                    autoCorrect="off"
+                    autoComplete="off"
                     placeholder="Buscar por nombre"
                     className="w-full border px-2.5 rounded-md border-gray-200 py-2.5 pe-10 shadow-xs sm:text-sm"
                 />
@@ -57,7 +52,11 @@ export default function PublishersFilter(props: CounterProps) {
                   </svg>
                 </button>
               </span>
-            </div>
+                    </div>
+                 {!publishersSignal.value?.length && <div>No se han encontrado datos</div>}
+            
+                {
+                    publishersSignal.value && <>   
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                 {publishersSignal.value.map(( pub: IPublisher ) => (
                     <CardItem
@@ -83,7 +82,10 @@ export default function PublishersFilter(props: CounterProps) {
                         }
                     />
                 ))}
-        </div>
+                          </div>
+       </>
+            }
+               
         </>
     );
 }

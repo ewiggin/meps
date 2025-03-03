@@ -1,14 +1,12 @@
 import { Breadcrumb } from "@app/components/Breadcrumb.tsx";
 import { FreshContext, Handlers } from 'https://deno.land/x/fresh@1.7.2/src/server/types.ts';
 import { ITerritoryAssignment, TerritoryAssignmentService } from '@app/domain/services/territory-assignment.service.ts';
-import publishers from "@app/data/publishers.json" with { type: 'json' };
-import { CryptoUtils } from "@app/domain/crypto.utils.ts";
-import { IPublisher } from '@app/domain/model/publisher.ts';
+import PublisherName from '@app/islands/PublisherName.tsx';
 
 interface PublisherViewArgs {
     data: {
-        publisher: IPublisher;
         assignments: ITerritoryAssignment[];
+        userId: string;
     }
 }
 
@@ -16,33 +14,24 @@ export const handler: Handlers<unknown> = {
     async GET(_: Request, ctx: FreshContext) {
 
         const userId = ctx.params.id;
-        const decryptedPublishers: IPublisher[] = await CryptoUtils.decrypt(
-            publishers,
-            Deno.env.get('KEY_BASE_64')!,
-        );
-
-        const publisher = decryptedPublishers.find((item) => item.id === userId);
-        if (!publisher) {
-            return ctx.renderNotFound();
-        }
 
         // Assignments
         const assignments = (await TerritoryAssignmentService.listByUserId(userId) || [])
             .toSorted((one, other) => new Date(other.date).getTime() - new Date(one.date).getTime());
 
-        return ctx.render({ assignments, publisher });
+        return ctx.render({ assignments, userId });
     },
 };
 
 export default function PublisherView(args: PublisherViewArgs) {
 
-    const { publisher, assignments } = args.data;
+    const { assignments, userId } = args.data;
 
     return (
         <>
             <Breadcrumb
-                title={`Publicadores: ${publisher.name} ${publisher.lastName}`}
-                backLink={'/admin/publishers'}
+                title={<PublisherName pubId={userId} />}
+                backLink="/admin/publishers"
             >
             </Breadcrumb>
             <div className='container mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8'>
