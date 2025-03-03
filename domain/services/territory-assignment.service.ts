@@ -8,7 +8,6 @@ export interface ITerritoryAssignment {
 }
 
 export class TerritoryAssignmentService {
-
     /**
      * Abre o asigna territorio a un usuario.
      *
@@ -90,7 +89,7 @@ export class TerritoryAssignmentService {
 
     /**
      * Comprueba que el territorio este abierto.
-     * 
+     *
      * @param region Region Id
      * @param territoryId Territory ID
      * @returns boolean
@@ -108,7 +107,7 @@ export class TerritoryAssignmentService {
 
     /**
      * Cierra el territorio abierto previamente.
-     * 
+     *
      * @param region Region Id
      * @param territoryId Territory Num
      * @param date Fecha de referencia
@@ -124,13 +123,14 @@ export class TerritoryAssignmentService {
 
         const assignmentKey = ['assignments', region, territoryId, date];
         // Cerramos el territorio
-        const item: ITerritoryAssignment | null = (await db.get<ITerritoryAssignment>(assignmentKey)).value;
+        const item: ITerritoryAssignment | null =
+            (await db.get<ITerritoryAssignment>(assignmentKey)).value;
         if (item) {
             item.closeAt = new Date(closeAt);
 
             // Actualizamos también el registro del usuario
             const userId = item.userId;
-            const userKey = ['user_assignments', userId, date]
+            const userKey = ['user_assignments', userId, date];
 
             await db
                 .atomic()

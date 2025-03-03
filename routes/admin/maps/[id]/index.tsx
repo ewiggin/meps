@@ -22,27 +22,34 @@ interface IAdminMapsDetailArgs {
     data: {
         id: string;
         territories: ITerritoryWithAssign[];
-        sortBy: TerritorySorting
-    }
+        sortBy: TerritorySorting;
+    };
 }
 
 export const handler: Handlers<unknown> = {
     async GET(_: Request, ctx: FreshContext) {
-
-        const sortBy: TerritorySorting = (ctx.url?.searchParams?.get('sort') as unknown as TerritorySorting) || TerritorySorting.NORMAL;
+        const sortBy: TerritorySorting = (ctx.url?.searchParams?.get(
+            'sort',
+        ) as unknown as TerritorySorting) || TerritorySorting.NORMAL;
 
         const regionId = ctx.params.id;
         // Assignments
         const assignments = await TerritoryAssignmentService.list(regionId);
-        const territories = [...(territoriesData as Record<string, ITerritory[]>)[regionId]] as ITerritoryWithAssign[];
+        const territories = [
+            ...(territoriesData as Record<string, ITerritory[]>)[regionId],
+        ] as ITerritoryWithAssign[];
 
         territories.forEach((item) => {
-            item.countAssignations = assignments.filter((assign) => assign.territoryId === item.num)?.length || 0;
+            item.countAssignations = assignments.filter((assign) =>
+                assign.territoryId === item.num
+            )?.length || 0;
         });
 
         assignments
             .forEach((assign) => {
-                const territory2Assign = [...territories].find((item) => item.num === assign.territoryId);
+                const territory2Assign = [...territories].find((item) =>
+                    item.num === assign.territoryId
+                );
                 if (!territory2Assign) {
                     return;
                 }
@@ -63,11 +70,13 @@ export const handler: Handlers<unknown> = {
                     // Compare the dates
                     territory2Assign.toClaim = targetDate >= currentDate;
                 }
-        });
+            });
 
         let sortedTerritories: ITerritoryWithAssign[] = territories;
         if (sortBy === TerritorySorting.LESS_WORKED) {
-            sortedTerritories = territories.toSorted((one, other) => one.countAssignations - other.countAssignations);
+            sortedTerritories = territories.toSorted((one, other) =>
+                one.countAssignations - other.countAssignations
+            );
         } else if (sortBy === TerritorySorting.OLDER) {
             sortedTerritories = territories.toSorted((one, other) => {
                 if (!one.date) {
@@ -84,7 +93,7 @@ export const handler: Handlers<unknown> = {
         return ctx.render({
             territories: sortedTerritories,
             id: regionId,
-            sortBy
+            sortBy,
         });
     },
 };
@@ -95,22 +104,34 @@ export default function AdminMapsDetailPage(props: IAdminMapsDetailArgs) {
     return (
         <>
             <Breadcrumb title={`Territorio: ${id}`} backLink={'/admin/maps'}>
-                <div className="inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1">
+                <div className='inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1'>
                     <a
                         href={`?sort=${TerritorySorting.NORMAL}`}
-                        className={`${ !sortBy || sortBy === TerritorySorting.NORMAL ? `bg-white text-blue-500`: 'text-gray-500' } inline-block rounded-md  px-4 py-2 text-sm shadow-xs focus:relative`}
+                        className={`${
+                            !sortBy || sortBy === TerritorySorting.NORMAL
+                                ? `bg-white text-blue-500`
+                                : 'text-gray-500'
+                        } inline-block rounded-md  px-4 py-2 text-sm shadow-xs focus:relative`}
                     >
                         Alfabético
                     </a>
                     <a
                         href={`?sort=${TerritorySorting.OLDER}`}
-                        className={`${ sortBy === TerritorySorting.OLDER ? `bg-white text-blue-500`: 'text-gray-500' } inline-block rounded-md  px-4 py-2 text-sm shadow-xs focus:relative`}
+                        className={`${
+                            sortBy === TerritorySorting.OLDER
+                                ? `bg-white text-blue-500`
+                                : 'text-gray-500'
+                        } inline-block rounded-md  px-4 py-2 text-sm shadow-xs focus:relative`}
                     >
                         Antigüedad
                     </a>
                     <a
                         href={`?sort=${TerritorySorting.LESS_WORKED}`}
-                        className={`${ sortBy === TerritorySorting.LESS_WORKED ? `bg-white text-blue-500`: 'text-gray-500' } inline-block rounded-md  px-4 py-2 text-sm shadow-xs focus:relative`}
+                        className={`${
+                            sortBy === TerritorySorting.LESS_WORKED
+                                ? `bg-white text-blue-500`
+                                : 'text-gray-500'
+                        } inline-block rounded-md  px-4 py-2 text-sm shadow-xs focus:relative`}
                     >
                         Menos trabajado
                     </a>
@@ -119,13 +140,19 @@ export default function AdminMapsDetailPage(props: IAdminMapsDetailArgs) {
             <div className='container mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                     {territories && territories.length &&
-                        territories.map(( item: ITerritoryWithAssign) => (
+                        territories.map((item: ITerritoryWithAssign) => (
                             <CardItem
                                 link={`/admin/maps/${id}/${item.num}`}
                                 title={item.num}
-                                description={`Asignado ${item.countAssignations || 0} veces`}
+                                description={`Asignado ${
+                                    item.countAssignations || 0
+                                } veces`}
                                 icon={' '}
-                                colorClass={item.toClaim ? 'bg-red-200' : item.assigned ? 'bg-slate-200' : ''}
+                                colorClass={item.toClaim
+                                    ? 'bg-red-200'
+                                    : item.assigned
+                                    ? 'bg-slate-200'
+                                    : ''}
                             />
                         ))}
                 </div>

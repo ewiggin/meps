@@ -13,8 +13,12 @@ export const handler: Handlers<unknown> = {
         const { id, num } = ctx.params;
 
         // Assignments
-        const assignments: ITerritoryAssignment[] = (await TerritoryAssignmentService.list(id, num) || [])
-            .toSorted((one, other) => new Date(one.date).getTime() - new Date(other.date).getTime());
+        const assignments: ITerritoryAssignment[] =
+            (await TerritoryAssignmentService.list(id, num) || [])
+                .toSorted((one, other) =>
+                    new Date(one.date).getTime() -
+                    new Date(other.date).getTime()
+                );
 
         return ctx.render({
             id,
@@ -157,7 +161,10 @@ export default function AdminMapsDetailFinalPage(
                                     <tr>
                                         <td className='whitespace-nowrap px-4 py-2 font-medium text-gray-900'>
                                             <span>
-                                                <PublisherName pubId={item.userId}></PublisherName>
+                                                <PublisherName
+                                                    pubId={item.userId}
+                                                >
+                                                </PublisherName>
                                             </span>
                                         </td>
                                         <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
@@ -171,7 +178,13 @@ export default function AdminMapsDetailFinalPage(
                                             )}
                                         </td>
                                         <td className='whitespace-nowrap px-4 py-2 text-gray-700'>
-                                          {item.link && <a href={`https://meps.deno.dev/maps/${id}/${num}`}>🔗</a> }
+                                            {item.link && (
+                                                <a
+                                                    href={`https://meps.deno.dev/maps/${id}/${num}`}
+                                                >
+                                                    🔗
+                                                </a>
+                                            )}
                                         </td>
                                         {item?.closeAt &&
                                             (

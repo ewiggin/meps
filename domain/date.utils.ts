@@ -1,19 +1,16 @@
-
 export class DateUtils {
-
     private static TIME_ZONE = 'Europe/Madrid';
 
     static toTemporalDateTime(date: Date): Temporal.ZonedDateTime {
         return Temporal.ZonedDateTime.from({
-                year: date.getFullYear(),
-                month: date.getMonth() + 1,
-                day: date.getDate(),
-                hour: 0,
-                minute: 0,
-                second: 0,
-                timeZone: DateUtils.TIME_ZONE
-            }
-        );
+            year: date.getFullYear(),
+            month: date.getMonth() + 1,
+            day: date.getDate(),
+            hour: 0,
+            minute: 0,
+            second: 0,
+            timeZone: DateUtils.TIME_ZONE,
+        });
     }
 
     static isEquals(ref: Date, date: Date): boolean {
