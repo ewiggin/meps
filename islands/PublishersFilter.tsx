@@ -4,11 +4,11 @@ import { useSignal } from '@preact/signals';
 import { StringUtils } from '@app/domain/string.utils.ts';
 
 export default function PublishersFilter() {
-    const localPublishers = JSON.parse(
+    const localPublishers = typeof window === 'undefined' ? [] : (JSON.parse(
         localStorage.getItem('pubs') as string,
-    ) as IPublisher[];
+    ) as IPublisher[]);
 
-    const publishersSignal = useSignal<IPublisher[]>(localPublishers || []);
+    const publishersSignal = useSignal<IPublisher[]>(localPublishers);
     const searchFn = (event: any): void => {
         if (!event?.target) {
             return;

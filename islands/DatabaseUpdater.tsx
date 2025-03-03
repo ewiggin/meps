@@ -5,6 +5,11 @@ import { useRef } from 'preact/hooks';
  * @returns JSX code
  */
 export default function DatabaseUpdater() {
+    if (typeof window === 'undefined') {
+        console.log('Currently on Server Side');
+        return;
+    }
+
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const hasDB =
