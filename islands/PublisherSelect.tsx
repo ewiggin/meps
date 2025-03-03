@@ -1,9 +1,11 @@
 import { IPublisher } from '@app/domain/model/publisher.ts';
+import { IS_BROWSER } from '$fresh/runtime.ts';
 
 export default function PublisherSelect({ name }: { name: string }) {
-    if (typeof window === 'undefined') {
-        console.log('Currently on Server Side');
-        return;
+    if (!IS_BROWSER) {
+        return (
+            <p>Leaflet must be loaded on the client. No children will render</p>
+        );
     }
 
     const localPublishers =

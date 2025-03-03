@@ -2,11 +2,18 @@ import { IPublisher } from '@app/domain/model/publisher.ts';
 import { CardItem } from '@app/components/CardItem.tsx';
 import { useSignal } from '@preact/signals';
 import { StringUtils } from '@app/domain/string.utils.ts';
+import { IS_BROWSER } from '$fresh/runtime.ts';
 
 export default function PublishersFilter() {
-    const localPublishers = typeof window === 'undefined' ? [] : (JSON.parse(
+    if (!IS_BROWSER) {
+        return (
+            <p>Leaflet must be loaded on the client. No children will render</p>
+        );
+    }
+
+    const localPublishers = JSON.parse(
         localStorage.getItem('pubs') as string,
-    ) as IPublisher[]);
+    ) as IPublisher[];
 
     const publishersSignal = useSignal<IPublisher[]>(localPublishers);
     const searchFn = (event: any): void => {

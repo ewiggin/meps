@@ -1,3 +1,4 @@
+import { IS_BROWSER } from '$fresh/runtime.ts';
 import { useRef } from 'preact/hooks';
 /**
  * Actualiza la base de datos local con el archivo .meps correspondiente.
@@ -5,9 +6,10 @@ import { useRef } from 'preact/hooks';
  * @returns JSX code
  */
 export default function DatabaseUpdater() {
-    if (typeof window === 'undefined') {
-        console.log('Currently on Server Side');
-        return;
+    if (!IS_BROWSER) {
+        return (
+            <p>Leaflet must be loaded on the client. No children will render</p>
+        );
     }
 
     const fileInputRef = useRef<HTMLInputElement>(null);
