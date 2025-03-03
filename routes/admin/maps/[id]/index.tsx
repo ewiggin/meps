@@ -47,7 +47,7 @@ export const handler: Handlers<unknown> = {
 
         assignments
             .forEach((assign) => {
-                const territory2Assign = [...territories].find((item) =>
+                const territory2Assign = territories.find((item) =>
                     item.num === assign.territoryId
                 );
                 if (!territory2Assign) {
@@ -58,18 +58,18 @@ export const handler: Handlers<unknown> = {
                     ? new Date(assign.closeAt || assign.date)
                     : null;
 
-                if (assign.date && !assign.closeAt) {
-                    territory2Assign.assigned = true;
+                territory2Assign.assigned = Boolean(assign.date) &&
+                    !assign.closeAt;
 
-                    const currentDate = new Date(assign.date);
-                    const targetDate = new Date();
+                const currentDate = new Date(assign.date);
+                const targetDate = new Date();
 
-                    // Add 4 months to the current date
-                    currentDate.setMonth(currentDate.getMonth() + 4);
+                // Add 4 months to the current date
+                currentDate.setMonth(currentDate.getMonth() + 4);
 
-                    // Compare the dates
-                    territory2Assign.toClaim = targetDate >= currentDate;
-                }
+                // Compare the dates
+                territory2Assign.toClaim = !assign.closeAt &&
+                    targetDate >= currentDate;
             });
 
         let sortedTerritories: ITerritoryWithAssign[] = territories;
@@ -103,7 +103,7 @@ export default function AdminMapsDetailPage(props: IAdminMapsDetailArgs) {
 
     return (
         <>
-            <Breadcrumb title={`Territorio: ${id}`} backLink={'/admin/maps'}>
+            <Breadcrumb title={`Territorio: ${id}`} backLink='/admin/maps'>
                 <div className='inline-flex rounded-lg border border-gray-100 bg-gray-100 p-1'>
                     <a
                         href={`?sort=${TerritorySorting.NORMAL}`}

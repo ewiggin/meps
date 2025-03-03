@@ -18,7 +18,13 @@ export default function DatabaseUpdater() {
         const target = event.target as HTMLInputElement;
         if (target.files && target.files.length > 0) {
             // Database update!!
-            processCSV(target.files[0]);
+            const file = target.files[0];
+
+            if (!file.name.endsWith('.meps')) {
+                alert('Solo se permiten archivos .meps');
+                return;
+            }
+            processCSV(file);
         }
     };
 
@@ -53,6 +59,7 @@ export default function DatabaseUpdater() {
             <input
                 type='file'
                 ref={fileInputRef}
+                accept='.meps'
                 style={{ display: 'none' }}
                 onChange={handleFileChange}
             />
