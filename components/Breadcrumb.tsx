@@ -1,6 +1,6 @@
 export function Breadcrumb(
     { title, backLink, children }: {
-        title: string;
+        title: string | any;
         backLink?: string;
         children?: any;
     },

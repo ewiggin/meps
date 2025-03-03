@@ -15,6 +15,9 @@ import * as $admin_publishers_id_ from './routes/admin/publishers/[id].tsx';
 import * as $admin_publishers_index from './routes/admin/publishers/index.tsx';
 import * as $index from './routes/index.tsx';
 import * as $maps_id_num_index from './routes/maps/[id]/[num]/index.tsx';
+import * as $DatabaseUpdater from './islands/DatabaseUpdater.tsx';
+import * as $PublisherName from './islands/PublisherName.tsx';
+import * as $PublisherSelect from './islands/PublisherSelect.tsx';
 import * as $PublishersFilter from './islands/PublishersFilter.tsx';
 import type { Manifest } from '$fresh/server.ts';
 
@@ -35,6 +38,9 @@ const manifest = {
         './routes/maps/[id]/[num]/index.tsx': $maps_id_num_index,
     },
     islands: {
+        './islands/DatabaseUpdater.tsx': $DatabaseUpdater,
+        './islands/PublisherName.tsx': $PublisherName,
+        './islands/PublisherSelect.tsx': $PublisherSelect,
         './islands/PublishersFilter.tsx': $PublishersFilter,
     },
     baseUrl: import.meta.url,
